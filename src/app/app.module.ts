@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatTableModule, MatButtonModule, MatPaginatorModule } from '@angular/material';  
+import { MatTableModule, MatButtonModule, MatPaginatorModule, MatCardModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -13,9 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonModule,
-    MatPaginatorModule
-  
-    
+    MatPaginatorModule,
+    MatCardModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

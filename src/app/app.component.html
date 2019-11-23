@@ -1,27 +1,42 @@
 
 
-<button (click)="criarPrioridade()" mat-button>Prioridade</button>
-<button (click)="criarNormal()" mat-button>Normal</button>
-<button (click)="chamarSenha()" mat-button>Chamar Senha</button>
 
-<h2>Senha Atual:</h2> <p>{{ senhaAtual}}</p> <p>{{ senhaTipo }}</p>
+<mat-card class="card">
+  <h2>Senha Atual:</h2>
+  <p>{{ senhaAtual}}</p> <p>{{ senhaTipo }}</p>
+</mat-card>
 
-<table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+<div style="margin-top: 150px;">
+    <div >
 
-
-  <ng-container matColumnDef="senha">
-    <th mat-header-cell *matHeaderCellDef> Senha </th>
-    <td mat-cell *matCellDef="let element; let i = index"> {{i === 0?1:i+1}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="tipo">
-    <th mat-header-cell *matHeaderCellDef> Tipo </th>
-    <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
-  </ng-container>
+      <div class="space-top">
+        <table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
 
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            <ng-container matColumnDef="senha">
+              <th mat-header-cell *matHeaderCellDef> Senha </th>
+              <td mat-cell *matCellDef="let element; let i = index"> {{element.senha}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="tipo">
+              <th mat-header-cell *matHeaderCellDef> Tipo </th>
+              <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+           <mat-paginator class="pag" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+  </div>
+  <div class="group-btn">
+      <button class="btn-secondary-prioridade"  mat-raised-button (click)="criarPrioridade()" mat-button>Prioridade</button>
+      <button class="btn-secondary-normal" mat-raised-button (click)="criarNormal()" mat-button>Normal</button>
+      <button class="btn-secondary" mat-raised-button (click)="chamarSenha(true)" mat-button>Chamar Senha</button>
+  </div>
+
+</div>
+

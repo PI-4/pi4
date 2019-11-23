@@ -8,7 +8,7 @@ import { empty } from 'rxjs';
 export class Senha {
   senha: number = 0;
   tipo: string;
-  
+
 }
 
 let ELEMENT_DATA: Senha[] = [];
@@ -18,7 +18,7 @@ let ELEMENT_DATA: Senha[] = [];
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
+
 
   senhaPrioridade:Senha;
   senhaNormal:Senha;
@@ -36,47 +36,65 @@ export class AppComponent implements OnInit {
 
   }
   criarPrioridade() {
-    console.log(ELEMENT_DATA.length);
-    console.log(ELEMENT_DATA);
-    
+
+
     this.senhaPrioridade = new Senha();
     this.senhaPrioridade.tipo = 'Prioridade';
     this.senhaPrioridade.senha = this.ultSenha + 1;
+    this.ultSenha = this.senhaPrioridade.senha;
     ELEMENT_DATA.push(this.senhaPrioridade);
     this.dataSource.data = ELEMENT_DATA;
-    
-    
+
+
   }
 
   criarNormal() {
     this.senhaNormal = new Senha();
     this.senhaNormal.tipo = 'Normal';
     this.senhaNormal.senha = this.ultSenha + 1;
+    this.ultSenha = this.senhaNormal.senha;
     ELEMENT_DATA.push(this.senhaNormal);
     this.dataSource.data = ELEMENT_DATA;
-    console.log(ELEMENT_DATA)
-    
+
   }
 
-  chamarSenha() {
+
+  chamarSenha(prio:boolean) {
+    const prioridade:Senha[] = ELEMENT_DATA.filter(element => element.tipo === 'Prioridade');
+    const normal:Senha[] = ELEMENT_DATA.filter(element => element.tipo === 'Normal');
+    console.log(prioridade)
+    console.log(normal)
     ELEMENT_DATA.forEach((element,index) => {
-      if(element.tipo === 'Prioridade') {
+      if(prioridade.length > 0 && prio && element.tipo === 'Prioridade') {
         this.count +=1;
-        this.senhaAtual = element.senha === 0?1:element.senha +1;
+        this.senhaAtual = element.senha;
         this.senhaTipo = 'Prioridade';
         ELEMENT_DATA.splice(index,1);
+
+
+        prio = false;
         return element;
       }
-      if (this.count > 0) {
-        this.senhaAtual = element.senha === 0?1:element.senha +1;
+       if (prioridade.length === 0) {
+        this.senhaAtual = element.senha;
         this.senhaTipo = 'Normal';
         ELEMENT_DATA.splice(index,1);
+
         return element;
       }
     });
-    
+
     console.log(ELEMENT_DATA);
     this.dataSource.data = ELEMENT_DATA.filter(element => element !== undefined);;
   }
+
+
+  card() {
+    if(this.senhaAtual === 'prioridade') {
+      return 'cardPrioridade';
+    } else {
+      return 'card';
+  }
+}
 
 }

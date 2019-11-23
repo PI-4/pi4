@@ -1,6 +1,49 @@
 table {
     width: 80%;
     height: 50%;
-    margin-left: 37%;
+    margin-left: 10%;
+
 
   }
+  .space-top {
+    margin-top: 30px;
+}
+.pag {
+  width: 90%;
+}
+
+
+.card {
+  width: 17%;
+
+  background-color: bisque;
+
+}
+
+
+
+.btn-secondary{
+  margin: 10px 5px !important;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  background: white;
+  border: white;
+  color: black;
+}
+
+.btn-secondary-prioridade:hover{
+  background: #e6e6e6;
+  border: #e6e6e6;
+  color: red;
+}
+.btn-secondary-normal:hover{
+  background: #e6e6e6;
+  border: #e6e6e6;
+  color: blue;
+}
+.group-btn {
+  width: 49%;
+  margin-left: 38%;
+  margin-top: 5%;
+
+}
